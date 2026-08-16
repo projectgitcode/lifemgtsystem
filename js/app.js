@@ -611,7 +611,7 @@ function navigateToTab(tab){
   renderShell();
 }
 function homeNavButton(tab,label){
-  return '<button class=\"home-nav-btn\" type=\"button\" title=\"Go to '+esc(label)+'\" aria-label=\"Go to '+esc(label)+'\" onclick=\"event.stopPropagation();navigateToTab(\\\''+tab+'\\\')\">↗</button>';
+  return '<button class="home-nav-btn" type="button" title="Go to '+esc(label)+'" aria-label="Go to '+esc(label)+'" data-home-nav="'+esc(tab)+'">↗</button>';
 }
 function homeCardTitle(title,tab,label){
   return '<div class=\"card-head-row home-card-head\"><div class=\"card-title\">'+title+'</div>'+homeNavButton(tab,label)+'</div>';
@@ -724,6 +724,13 @@ function renderHome(){
      '</div></div>'+
    '</div>'+
    '<div class="home-note">This page is a read-only summary — manage items from their own tabs.</div>';
+  main.querySelectorAll('[data-home-nav]').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.preventDefault();
+      e.stopPropagation();
+      navigateToTab(btn.dataset.homeNav);
+    });
+  });
   scheduleHomeNotifications();
 }
 
