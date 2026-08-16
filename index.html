@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Life Management</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#12141a">
+<link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/icon-192.png">
+<link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/main.css">
+
+<link rel="stylesheet" href="./css/neo-dark.css">
+
+
+<link rel="stylesheet" href="./css/report-dashboard.css">
+<link rel="stylesheet" href="./css/notifications.css">
+
+</head>
+<body>
+<div class="topbar">
+  <div class="brand"><span class="brand-mark">§</span><span class="topbar-title" id="topbarTitle">Life Management</span></div>
+  <button class="hamburger" onclick="toggleSidebar()">☰</button>
+</div>
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeSidebar()"></div>
+<div id="app"><div class="loading">Loading your ledger…</div></div>
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal()">
+  <div class="modal-box">
+    <div class="modal-head"><div class="modal-title" id="modalTitle"></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./js/app.js"></script>
+<script src="./js/notifications.js"></script>
+
+</body>
+</html>
